@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <title>Text</title>
+    <meta name="description" content="Text - A-Frame">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-mixin
+          id="marker"
+          geometry="primitive: plane; width: 0.02; height: 0.02"
+          material="color: red"
+        ></a-mixin>
+      </a-assets>
+
+      <script>
+        var scene = document.querySelector('a-scene');
+        var text = document.createElement('a-entity');
+        text.setAttribute('geometry', 'primitive: plane; width: 4; height: auto');
+        text.setAttribute('material', 'color: blue');
+        text.setAttribute('position', '0 1 0')
+        text.setAttribute('text', 'anchor: center; width: 1.5; color: white; value: [CENTER ANCHOR] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam');
+        scene.appendChild(text);
+      </script>
+      <a-entity position="0 2 0"
+                text="anchor: center; width: 1.5; color: white; value: [CENTER ANCHOR] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam">
+      </a-entity>
+
+
+      <a-sky color="#222"></a-sky>
+      <a-entity position="0 1.8 2">
+        <a-entity camera look-controls wasd-controls></a-entity>
+      </a-entity>
+    </a-scene>
+
+    <!-- <script>
+      // Animate opacity.
+      var opacity = document.getElementById('opacity');
+      var obj = {opacity: 0};
+      var tween = new AFRAME.TWEEN.Tween(obj)
+        .to({opacity: 1}, 500)
+        .repeat( Infinity )
+        .yoyo( true )
+        .onUpdate(function () {
+          opacity.setAttribute('text', 'opacity', obj.opacity);
+        })
+        .start();
+
+      // Animate color.
+      var color = document.getElementById('color');
+      setInterval(function() {
+        var randomHexColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+        color.setAttribute('text', 'color', randomHexColor);
+      }, 1000);
+
+      // Animate size.
+      var size = document.getElementById('size');
+      var objsize = {scale: 60};
+      var tween = new AFRAME.TWEEN.Tween(objsize)
+        .to({scale: 20}, 1000)
+        .repeat( Infinity )
+        .yoyo( true )
+        .onUpdate(function () {
+          size.setAttribute('text', 'wrapCount', objsize.scale);
+        })
+        .start();
+    </script> -->
+  </body>
+</html>
